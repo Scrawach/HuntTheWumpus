@@ -1,9 +1,15 @@
 ﻿using HuntTheWumpus.Console;
 using HuntTheWumpus.Core;
 using HuntTheWumpus.Core.AI;
+using HuntTheWumpus.Core.Common;
+
+var settings = new GameSettings()
+{
+    WorldSize = new Vector2(5, 5)
+};
 
 var game = new Game();
-game.Initialize();
+game.Initialize(settings);
 
 var worldTextView = new WorldTextView(game.Mechanics.World, game.Mechanics.Actors);
 var gameEndScreen = new GameEndScreen(game);

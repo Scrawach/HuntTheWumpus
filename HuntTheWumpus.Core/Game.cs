@@ -21,13 +21,13 @@ public class Game
     
     public GameResult Result { get; private set; }
 
-    public void Initialize()
+    public void Initialize(GameSettings settings)
     {
         var random = new RandomService(new Random());
         var defaultRules = new PlaceRules(random);
         var actors = new ActorsProvider();
         var world = new WorldBuilder()
-            .WithSize(new Vector2(5, 5))
+            .WithSize(settings.WorldSize)
             .UseRules(defaultRules)
             .Build();
 
