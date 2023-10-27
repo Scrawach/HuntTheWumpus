@@ -28,6 +28,6 @@ public class WorldService : IWorldService
         IsNotWall(coords);
 
     private bool IsNotWall(Vector2 coords) =>
-        coords.X > 0 && coords.X < _map.GetLength(0) && 
-        coords.Y > 0 && coords.Y < _map.GetLength(1);
+        coords.X >= 0 && coords.X < _map.GetLength(0) && 
+        coords.Y >= 0 && coords.Y < _map.GetLength(1);
 }
