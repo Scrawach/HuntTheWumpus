@@ -1,22 +1,25 @@
 using HuntTheWumpus.Core.Commands.Abstract;
+using HuntTheWumpus.Core.Common;
 using HuntTheWumpus.Core.Entities;
 using HuntTheWumpus.Core.Services;
 
 namespace HuntTheWumpus.Core.Commands.Concrete;
 
-public class DieCommand : CommandBase
+public class WumpusMoveCommand : CommandBase
 {
     public readonly Actor Actor;
+    public readonly Vector2 Target;
 
-    public DieCommand(Actor actor) =>
+    public WumpusMoveCommand(Actor actor, Vector2 target)
+    {
         Actor = actor;
+        Target = target;
+    }
 
     public override CommandStatus Execute(ICoreMechanics mechanics)
     {
-        Actor.IsDead = true;
+        AddChildren(new AttackCommand(Target));
+        AddChildren(new MoveCommand(Actor, Target));
         return Success();
     }
-
-    public override string ToString() =>
-        $"[{Actor} died]";
 }

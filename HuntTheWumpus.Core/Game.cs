@@ -54,13 +54,13 @@ public class Game
         {
             yield return command;
 
-            if (IsWumpusEatPlayer())
+            if (_player.IsDead)
                 Result = GameResult.PlayerDefeated();
+
+            if (_wumpus.IsDead)
+                Result = GameResult.WumpusDefeated();
         }
     }
-
-    private bool IsWumpusEatPlayer() =>
-        _player.Position == _wumpus.Position;
 
     private IEnumerable<Func<ICommand>> Turns(ITurnMaker playerTurn) =>
         new[]

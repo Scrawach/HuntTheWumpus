@@ -13,6 +13,8 @@ public class Actor
     public string Name { get; }
     
     public Vector2 Position { get; set; }
+    
+    public bool IsDead { get; set; }
 
     public override string ToString() =>
         $"{Name}";

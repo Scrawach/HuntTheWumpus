@@ -20,14 +20,15 @@ public class WumpusIntellect : ITurnMaker
         var isSleep = _mechanics.Random.Next(4) > 0;
         return isSleep 
             ? new EmptyCommand() 
-            : ProcessMovement(actor, _mechanics.Random, _mechanics.World);
+            : ProcessAttackMovement(actor, _mechanics.Random, _mechanics.World);
     }
 
-    private static ICommand ProcessMovement(Actor actor, IRandomService random, IWorldService world)
+    private static ICommand ProcessAttackMovement(Actor actor, IRandomService random, IWorldService world)
     {
         var directions = GetAvailableDirectionFrom(actor.Position, world);
         var index = random.Next(directions.Count);
-        return new MoveCommand(actor, actor.Position + directions[index]);
+        var target = actor.Position + directions[index];
+        return new WumpusMoveCommand(actor, target);
     }
 
     private static IReadOnlyList<Vector2> GetAvailableDirectionFrom(Vector2 point, IWorldService world)
