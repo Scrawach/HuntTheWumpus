@@ -19,7 +19,7 @@ public class Game
     
     public ICoreMechanics Mechanics { get; private set; }
     
-    public bool IsGameOver { get; private set; }
+    public GameResult Result { get; private set; }
 
     public void Initialize()
     {
@@ -42,6 +42,8 @@ public class Game
 
         Mechanics = mechanics;
         _executor = new CommandExecutor(mechanics);
+        
+        Result = GameResult.Process();
     }
     
     public IEnumerable<ICommand> Update(ITurnMaker player)
@@ -52,7 +54,7 @@ public class Game
             yield return command;
 
             if (IsWumpusEatPlayer())
-                IsGameOver = true;
+                Result = GameResult.PlayerDefeated();
         }
     }
 

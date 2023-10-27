@@ -6,9 +6,10 @@ var game = new Game();
 game.Initialize();
 
 var worldTextView = new WorldTextView(game.Mechanics.World, game.Mechanics.Actors);
+var gameEndScreen = new GameEndScreen(game);
 var playerTurnMaker = new EmptyIntellect();
 
-while (!game.IsGameOver)
+while (game.Result.IsProcess)
 {
     foreach (var command in game.Update(playerTurnMaker)) 
         Console.WriteLine($"Executed {command}");
@@ -17,4 +18,4 @@ while (!game.IsGameOver)
     await Task.Delay(200);
     Console.Clear();
 }
-Console.WriteLine($"GAME OVER!");
+Console.WriteLine(gameEndScreen);
