@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntTheWumpus.Core", "HuntT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntTheWumpus.Console", "HuntTheWumpus.Console\HuntTheWumpus.Console.csproj", "{F55D659B-7F43-4753-96C5-C641E73BACBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuntTheWumpus.Tests", "HuntTheWumpus.Tests\HuntTheWumpus.Tests.csproj", "{D46E1605-A85A-428E-AA8C-7E362E63580E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F55D659B-7F43-4753-96C5-C641E73BACBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F55D659B-7F43-4753-96C5-C641E73BACBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F55D659B-7F43-4753-96C5-C641E73BACBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D46E1605-A85A-428E-AA8C-7E362E63580E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46E1605-A85A-428E-AA8C-7E362E63580E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46E1605-A85A-428E-AA8C-7E362E63580E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46E1605-A85A-428E-AA8C-7E362E63580E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
