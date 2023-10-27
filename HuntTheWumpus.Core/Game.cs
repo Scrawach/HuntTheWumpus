@@ -38,7 +38,7 @@ public class Game
         actors.Add(_player);
         
         _wumpusAi = new WumpusIntellect(mechanics);
-        _wumpus = new Wumpus(random.From(world.RoomPositions().ToArray()));
+        _wumpus = new Wumpus(random.From(world.RoomPositionsExcept(_player.Position).ToArray()));
         actors.Add(_wumpus);
 
         Mechanics = mechanics;

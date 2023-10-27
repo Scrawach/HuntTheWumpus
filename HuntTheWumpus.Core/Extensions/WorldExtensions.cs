@@ -13,6 +13,9 @@ public static class WorldExtensions
             yield return new Vector2(x, y);
     }
 
+    public static IEnumerable<Vector2> RoomPositionsExcept(this IWorldService world, params Vector2[] except) =>
+        world.RoomPositions().Where(position => !except.Contains(position));
+
     public static IEnumerable<Vector2> EmptyRoomPositions(this IWorldService world) =>
         world.RoomPositions().Where(roomPosition => world.GetRoom(roomPosition) is EmptyRoom);
 }
