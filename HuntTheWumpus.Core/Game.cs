@@ -3,6 +3,7 @@ using HuntTheWumpus.Core.Commands;
 using HuntTheWumpus.Core.Commands.Abstract;
 using HuntTheWumpus.Core.Common;
 using HuntTheWumpus.Core.Entities;
+using HuntTheWumpus.Core.Extensions;
 using HuntTheWumpus.Core.Services;
 using HuntTheWumpus.Core.Services.Actors;
 using HuntTheWumpus.Core.Services.Random;
@@ -32,12 +33,12 @@ public class Game
             .Build();
 
         var mechanics = new CoreMechanics(world, random, actors);
-
-        _player = new Hunter(new Vector2(2, 2));
+        
+        _player = new Hunter(random.From(world.EmptyRoomPositions().ToArray()));
         actors.Add(_player);
         
         _wumpusAi = new WumpusIntellect(mechanics);
-        _wumpus = new Wumpus(new Vector2(4, 4));
+        _wumpus = new Wumpus(random.From(world.RoomPositions().ToArray()));
         actors.Add(_wumpus);
 
         Mechanics = mechanics;
