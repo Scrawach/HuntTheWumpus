@@ -20,7 +20,7 @@ public class MoveCommand : CommandBase
     {
         var isMovable = mechanics.World.IsMovable(Target);
 
-        if (!isMovable) 
+        if (!isMovable || Actor.IsDead) 
             return Failure();
         
         Actor.Position = Target;
