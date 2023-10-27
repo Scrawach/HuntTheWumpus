@@ -1,9 +1,9 @@
 using HuntTheWumpus.Core.AI;
 using HuntTheWumpus.Core.Commands;
 using HuntTheWumpus.Core.Commands.Abstract;
-using HuntTheWumpus.Core.Common;
 using HuntTheWumpus.Core.Entities;
 using HuntTheWumpus.Core.Extensions;
+using HuntTheWumpus.Core.Rules;
 using HuntTheWumpus.Core.Services;
 using HuntTheWumpus.Core.Services.Actors;
 using HuntTheWumpus.Core.Services.Random;
@@ -17,6 +17,7 @@ public class Game
     private CommandExecutor _executor;
     private Wumpus _wumpus;
     private Hunter _player;
+    private GameRules _rules;
     
     public ICoreMechanics Mechanics { get; private set; }
     
@@ -43,7 +44,8 @@ public class Game
 
         Mechanics = mechanics;
         _executor = new CommandExecutor(mechanics);
-        
+
+        _rules = new GameRules(new PlayerDefeatedRule(_player), new WumpusDefeatedRule(_wumpus));
         Result = GameResult.Process();
     }
     
@@ -53,12 +55,7 @@ public class Game
         foreach (var command in _executor.Execute(makeTurn()))
         {
             yield return command;
-
-            if (_player.IsDead)
-                Result = GameResult.PlayerDefeated();
-
-            if (_wumpus.IsDead)
-                Result = GameResult.WumpusDefeated();
+            Result = _rules.Process();
         }
     }
 
