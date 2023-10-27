@@ -1,6 +1,6 @@
-﻿using HuntTheWumpus.Console;
-using HuntTheWumpus.Console.Input;
+﻿using HuntTheWumpus.Console.Input;
 using HuntTheWumpus.Console.Input.Parser;
+using HuntTheWumpus.Console.View;
 using HuntTheWumpus.Core;
 using HuntTheWumpus.Core.Commands.Concrete;
 using HuntTheWumpus.Core.Common;

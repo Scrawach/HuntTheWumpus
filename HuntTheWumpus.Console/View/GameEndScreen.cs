@@ -1,6 +1,6 @@
 using HuntTheWumpus.Core;
 
-namespace HuntTheWumpus.Console;
+namespace HuntTheWumpus.Console.View;
 
 public class GameEndScreen
 {

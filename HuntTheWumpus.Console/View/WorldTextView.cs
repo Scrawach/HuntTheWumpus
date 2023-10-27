@@ -1,12 +1,11 @@
 using System.Text;
-using HuntTheWumpus.Core;
 using HuntTheWumpus.Core.Common;
 using HuntTheWumpus.Core.Entities;
 using HuntTheWumpus.Core.Rooms;
 using HuntTheWumpus.Core.Services.Actors;
 using HuntTheWumpus.Core.Services.World;
 
-namespace HuntTheWumpus.Console;
+namespace HuntTheWumpus.Console.View;
 
 public class WorldTextView
 {
