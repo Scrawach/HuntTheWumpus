@@ -29,7 +29,7 @@ public class PlayerInput : ITurnMaker
                 var nextPosition = actor.Position + direction;
 
                 if (_world.IsMovable(actor.Position + direction))
-                    return new MoveWithInteractCommand(actor, nextPosition);
+                    return new PlayerMoveCommand(actor, nextPosition);
                 
                 System.Console.WriteLine($"This is wall!");
             }

@@ -5,12 +5,12 @@ using HuntTheWumpus.Core.Services;
 
 namespace HuntTheWumpus.Core.Commands.Concrete;
 
-public class MoveWithInteractCommand : CommandBase
+public class PlayerMoveCommand : CommandBase
 {
     public readonly Actor Actor;
     public readonly Vector2 Target;
 
-    public MoveWithInteractCommand(Actor actor, Vector2 target)
+    public PlayerMoveCommand(Actor actor, Vector2 target)
     {
         Actor = actor;
         Target = target;

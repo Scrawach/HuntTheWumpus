@@ -7,5 +7,5 @@ namespace HuntTheWumpus.Core.Rooms;
 public class BatRoom : IRoom
 {
     public ICommand Interaction(Actor target) =>
-        new TeleportToRandomPlaceCommand(target);
+        new TeleportToRandomRoomCommand(target);
 }
