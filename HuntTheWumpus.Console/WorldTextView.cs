@@ -8,12 +8,12 @@ using HuntTheWumpus.Core.Services.World;
 
 namespace HuntTheWumpus.Console;
 
-public class WorldPrinter
+public class WorldTextView
 {
     private readonly IWorldService _world;
     private readonly IActorsProvider _actors;
 
-    public WorldPrinter(IWorldService world, IActorsProvider actors)
+    public WorldTextView(IWorldService world, IActorsProvider actors)
     {
         _world = world;
         _actors = actors;
