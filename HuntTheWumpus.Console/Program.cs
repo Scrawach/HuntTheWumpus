@@ -10,21 +10,22 @@ var settings = new GameSettings()
     WorldSize = new Vector2(5, 5)
 };
 
-var game = new Game();
-game.Initialize(settings);
+var mechanics = GameBuilder.CreateMechanics(settings);
 
-var worldTextView = new WorldTextView(game.Mechanics.World, game.Mechanics.Actors);
-var gameEndScreen = new GameEndScreen(game);
+var worldTextView = new WorldTextView(mechanics.World, mechanics.Actors);
 var playerTurnMaker = new PlayerInput
 (
-    new BaseAndDirectionParser("Movement", "move", game.Mechanics.World, (actor, direction) => new PlayerMoveCommand(actor, actor.Position + direction)),
-    new BaseAndDirectionParser("Shoot", "shoot", game.Mechanics.World, (actor, direction) => new AttackCommand(actor.Position + direction))
+    new BaseAndDirectionParser("Movement", "move", mechanics.World, (actor, direction) => new PlayerMoveCommand(actor, actor.Position + direction)),
+    new BaseAndDirectionParser("Shoot", "shoot", mechanics.World, (actor, direction) => new AttackCommand(actor.Position + direction))
 );
 
+var game = GameBuilder.CreateGame(mechanics, playerTurnMaker);
+var gameEndScreen = new GameEndScreen(game);
+
 Console.WriteLine(worldTextView);
-while (game.Result.IsProcess)
+while (game.Status.IsProcess)
 {
-    foreach (var command in game.Update(playerTurnMaker)) 
+    foreach (var command in game.Update()) 
         Console.WriteLine($"Executed {command}");
 
     Console.Clear();

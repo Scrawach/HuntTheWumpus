@@ -11,11 +11,11 @@ public class GameEndScreen
 
     public override string ToString()
     {
-        if (_game.Result.IsPlayerDefeated)
+        if (_game.Status.IsPlayerDefeated)
             return "GAME OVER! Wumpus eat Player!";
-        if (_game.Result.IsWumpusDefeated)
+        if (_game.Status.IsWumpusDefeated)
             return "CONGRATULATIONS! Player kill Wumpus!";
-        if (_game.Result.IsProcess)
+        if (_game.Status.IsProcess)
             return "The game is not played.";
         
         throw new Exception("Invalid Game Result!");
