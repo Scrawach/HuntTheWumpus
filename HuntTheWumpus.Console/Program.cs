@@ -9,10 +9,8 @@ var settings = new GameSettings()
 };
 
 var mechanics = GameBuilder.CreateMechanics(settings);
-
-var worldTextView = new WorldTextView(mechanics.World, mechanics.Actors);
 var game = GameBuilder.CreateGame(mechanics, PlayerInputBuilder.Create(mechanics));
-var gameEndScreen = new GameEndScreen(game);
+var worldTextView = new WorldTextView(mechanics.World, mechanics.Actors);
 
 Console.WriteLine(worldTextView);
 while (game.Status.IsProcess)
@@ -23,4 +21,4 @@ while (game.Status.IsProcess)
     Console.Clear();
     Console.WriteLine(worldTextView);
 }
-Console.WriteLine(gameEndScreen);
+Console.WriteLine(new GameEndScreen(game));
