@@ -22,4 +22,7 @@ public class WumpusMoveCommand : CommandBase
         AddChildren(new MoveCommand(Actor, Target));
         return Success();
     }
+
+    public override string ToString() =>
+        $"[WumpusMove for {Actor} to {Target}]";
 }

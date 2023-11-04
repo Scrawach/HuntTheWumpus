@@ -21,4 +21,7 @@ public class AttackCommand : CommandBase
 
         return Success();
     }
+
+    public override string ToString() =>
+        $"[Attack to {Target}]";
 }
