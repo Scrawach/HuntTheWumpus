@@ -18,7 +18,5 @@ while (game.Status.IsProcess)
 
     foreach (var command in game.Update()) 
         Console.WriteLine($"Executed {command}");
-
-    Console.Clear();
 }
 Console.WriteLine(new GameEndScreen(game));
