@@ -12,13 +12,13 @@ var mechanics = GameBuilder.CreateMechanics(settings);
 var game = GameBuilder.CreateGame(mechanics, PlayerInputBuilder.Create(mechanics));
 var worldTextView = new WorldTextView(mechanics.World, mechanics.Actors);
 
-Console.WriteLine(worldTextView);
 while (game.Status.IsProcess)
 {
+    Console.WriteLine(worldTextView);
+
     foreach (var command in game.Update()) 
         Console.WriteLine($"Executed {command}");
 
     Console.Clear();
-    Console.WriteLine(worldTextView);
 }
 Console.WriteLine(new GameEndScreen(game));
